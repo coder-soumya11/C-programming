@@ -1,0 +1,38 @@
+//write c program to check whether a string is palindrome or not without using any library functions
+#include <stdio.h>
+
+// Function to check if a string is a palindrome
+int isPalindrome(char str[]) {
+    int start = 0;
+    int end = 0;
+
+    // Find the length of the string
+    while (str[end] != '\0') {
+        end++;
+    }
+    end--; // Move to the last valid character of the string
+
+    // Check characters from start and end
+    while (start < end) {
+        if (str[start] != str[end]) {
+            return 0; // Not a palindrome
+        }
+        start++;
+        end--;
+    }
+    return 1; // Is a palindrome
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    if (isPalindrome(str)) {
+        printf("%s is a palindrome.\n", str);
+    } else {
+        printf("%s is not a palindrome.\n", str);
+    }
+
+    return 0;
+}
