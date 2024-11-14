@@ -1,0 +1,51 @@
+// write a c program to impliment bubbe shot and if the bubble sort is alredy implemented the program would not be executed
+  #include <stdio.h>
+#include <stdbool.h>
+
+// Function to check if array is already sorted
+bool isSorted(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Function to implement bubble sort
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter the elements:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    if (isSorted(arr, n)) {
+        printf("Array is already sorted. Bubble sort will not be executed.\n");
+    } else {
+        bubbleSort(arr, n);
+        printf("Array after bubble sort:\n");
+        for (int i = 0; i < n; i++) {
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
