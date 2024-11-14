@@ -1,0 +1,27 @@
+// write a c program to check wheather passenger has reached to madhyamgram station or not
+#include <stdio.h>
+#include <string.h>
+
+// Function to check if the current station is Madhyamgram
+int hasReachedMadhyamgram(char currentStation[]) {
+    if (strcmp(currentStation, "Madhyamgram") == 0) {
+        return 1; // Reached Madhyamgram
+    }
+    return 0; // Not reached Madhyamgram
+}
+
+int main() {
+    char currentStation[50];
+    
+    // Example: You can replace this with actual station input in real applications
+    printf("Enter the current station: ");
+    gets(currentStation); // Using gets for simplicity, though it's safer to use fgets in real applications
+
+    if (hasReachedMadhyamgram(currentStation)) {
+        printf("Passenger has reached Madhyamgram station.\n");
+    } else {
+        printf("Passenger has not reached Madhyamgram station.\n");
+    }
+
+    return 0;
+}
