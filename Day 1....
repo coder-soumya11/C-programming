@@ -1,0 +1,33 @@
+//write a c program to check whether akash kumar is presnt or not in class room
+#include <stdio.h>
+#include <string.h>
+
+// Function to check if "Akash Kumar" is present
+int isPresent(char names[][50], int n) {
+    for (int i = 0; i < n; i++) {
+        if (strcmp(names[i], "Akash Kumar") == 0) {
+            return 1; // Found "Akash Kumar"
+        }
+    }
+    return 0; // Not found
+}
+
+int main() {
+    int n;
+    printf("Enter the number of students in the class: ");
+    scanf("%d", &n);
+    
+    char names[n][50]; // Assuming maximum name length is 50 characters
+    printf("Enter the names of the students:\n");
+    for (int i = 0; i < n; i++) {
+        scanf(" %[^\n]", names[i]); // Reading names with spaces
+    }
+
+    if (isPresent(names, n)) {
+        printf("Akash Kumar is present in the class.\n");
+    } else {
+        printf("Akash Kumar is not present in the class.\n");
+    }
+
+    return 0;
+}
