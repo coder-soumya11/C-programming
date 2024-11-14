@@ -1,0 +1,51 @@
+//write a c program to impliment adamas university semester marking system
+#include <stdio.h>
+
+#define MAX_STUDENTS 100
+#define MAX_SUBJECTS 5
+
+struct Student {
+    char name[50];
+    int marks[MAX_SUBJECTS];
+    int totalMarks;
+    float averageMarks;
+};
+
+void calculateMarks(struct Student *student, int numSubjects) {
+    student->totalMarks = 0;
+    for (int i = 0; i < numSubjects; i++) {
+        student->totalMarks += student->marks[i];
+    }
+    student->averageMarks = (float)student->totalMarks / numSubjects;
+}
+
+int main() {
+    struct Student students[MAX_STUDENTS];
+    int numStudents, numSubjects;
+
+    printf("Enter the number of students: ");
+    scanf("%d", &numStudents);
+    printf("Enter the number of subjects: ");
+    scanf("%d", &numSubjects);
+
+    for (int i = 0; i < numStudents; i++) {
+        printf("Enter the name of student %d: ", i + 1);
+        scanf("%s", students[i].name);
+        printf("Enter marks for %s:\n", students[i].name);
+        for (int j = 0; j < numSubjects; j++) {
+            printf("Subject %d: ", j + 1);
+            scanf("%d", &students[i].marks[j]);
+        }
+        calculateMarks(&students[i], numSubjects);
+    }
+
+    printf("\nAdamas University Semester Marking System:\n");
+    for (int i = 0; i < numStudents; i++) {
+        printf("Student: %s\n", students[i].name);
+        printf("Total Marks: %d\n", students[i].totalMarks);
+        printf("Average Marks: %.2f\n", students[i].averageMarks);
+        printf("\n");
+    }
+
+    return 0;
+}
